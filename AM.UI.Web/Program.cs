@@ -11,6 +11,7 @@ builder.Services.AddDbContext<DbContext,AMContext>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IServiceFlight, ServiceFlight>();
 builder.Services.AddSingleton<Type>(t => typeof(GenericRepository<>));
+builder.Services.AddScoped<IServicePlane, ServicePlane>();
 
 var app = builder.Build();
 

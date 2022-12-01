@@ -1,14 +1,23 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AM.ApplicationCore.Domain;
+using AM.ApplicationCore.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AM.UI.Web.Controllers
 {
     public class PlaneController : Controller
     {
+         IServicePlane sp;
+
+        public PlaneController(IServicePlane sp)
+        {
+            this.sp = sp;
+
+        }
         // GET: PlaneController
         public ActionResult Index()
         {
-            return View();
+            return View(sp.GetMany());
         }
 
         // GET: PlaneController/Details/5
@@ -26,10 +35,12 @@ namespace AM.UI.Web.Controllers
         // POST: PlaneController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Plane collection)
         {
             try
             {
+                sp.Add(collection);
+                sp.Commit();
                 return RedirectToAction(nameof(Index));
             }
             catch
