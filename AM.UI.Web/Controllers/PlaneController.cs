@@ -1,37 +1,29 @@
-﻿using AM.ApplicationCore.Interfaces;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AM.UI.Web.Controllers
 {
-    public class FlightController : Controller
+    public class PlaneController : Controller
     {
-        IServiceFlight sf;
-
-        public FlightController (IServiceFlight sf){
-            this.sf=sf;
-          }
-        // GET: FlightController
-        public ActionResult Index(DateTime? dateDepart)
-        { if (dateDepart == null)
-            return View(sf.GetMany());
-        else 
-                return View(sf.GetMany(f=>f.FlightDate.Equals(dateDepart)));
+        // GET: PlaneController
+        public ActionResult Index()
+        {
+            return View();
         }
 
-        // GET: FlightController/Details/5
+        // GET: PlaneController/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: FlightController/Create
+        // GET: PlaneController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: FlightController/Create
+        // POST: PlaneController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -46,13 +38,13 @@ namespace AM.UI.Web.Controllers
             }
         }
 
-        // GET: FlightController/Edit/5
+        // GET: PlaneController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: FlightController/Edit/5
+        // POST: PlaneController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -67,13 +59,13 @@ namespace AM.UI.Web.Controllers
             }
         }
 
-        // GET: FlightController/Delete/5
+        // GET: PlaneController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: FlightController/Delete/5
+        // POST: PlaneController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

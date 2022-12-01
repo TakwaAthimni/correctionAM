@@ -6,6 +6,14 @@
 }
 
 <h1>Index</h1>
+<form asp-action="index">
+    <fieldset>
+        <legend> Recherche</legend>
+        Saisir une date de départ :
+        <input type="date" name="dateDepart" />
+        <input type="submit" value="Serach" />
+    </fieldset>
+</form>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -36,6 +44,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+    //Model: varible razor c'est ce que la vue va t'envoyer 
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FlightDate)
